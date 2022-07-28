@@ -1,11 +1,21 @@
-import {
-  Controller,
-  Get,
-} from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
+import { ApiProperty, ApiTags } from '@nestjs/swagger';
+
+class Quote {
+  @ApiProperty({
+    description: 'Текст цитаты',
+    example:
+      'The greatest glory in living lies not in never falling, but in rising every time we fall.',
+  })
+  quote: string;
+  @ApiProperty({ description: 'Автор цитаты', example: 'Nelson Mandela' })
+  author: string;
+}
 
 @Controller('quote')
+@ApiTags('quote')
 export class QuotesController {
-  private quotes = [
+  private quotes: Quote[] = [
     {
       quote:
         'The greatest glory in living lies not in never falling, but in rising every time we fall.',
@@ -42,7 +52,7 @@ export class QuotesController {
   ];
 
   @Get('/random')
-  public getRandomQuote() {
+  public getRandomQuote(): Quote {
     const index = Math.round(Math.random() * this.quotes.length);
 
     return this.quotes[index];
