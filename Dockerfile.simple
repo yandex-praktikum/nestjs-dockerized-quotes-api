@@ -1,0 +1,11 @@
+# Простейший вариант - в нем в итоговый образ попадает исходный код и dev-зависимости
+# Оптимальный вариант - multi-stage сборка, она реализована в Dockerfile
+FROM node:16-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+# Команда для запуска
+EXPOSE 3000
+CMD ["node","dist/main.js"]

@@ -1,5 +1,4 @@
 # API цитат
-Докеризированная версия проекта доступна в `feature/dockerize`
 
 ## Описание
 Пример простого API сервиса цитат на Nest.js
@@ -13,8 +12,8 @@
 
 ## Сборка
 Без Docker: `npm ci && npm run build`
-
+С Docker: `docker-compose build` (если compose установлен как cli-плагин то `docker compose `)
 ## Запуск
-`npm run start`
+`docker-compose up` (если compose установлен как cli-плагин то `docker compose up`)
 
 

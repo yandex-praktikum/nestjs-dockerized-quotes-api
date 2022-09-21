@@ -1,0 +1,11 @@
+version: '3.9'
+
+services:
+  quotes-api:
+    container_name: quotes-api
+    build: .
+    restart: always
+    ports:
+      - 3000:3000
+    networks:
+      - app-network
